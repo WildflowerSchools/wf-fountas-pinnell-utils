@@ -104,7 +104,7 @@ def create_roster_and_write_locally(
         )
     )
     master_roster_data = pd.read_pickle(filename)
-    fountas_pinnell_roster_data = wf_core_data.create_roster(
+    fountas_pinnell_roster_data = create_roster(
         master_roster_data=master_roster_data
     )
     write_rosters_local(
