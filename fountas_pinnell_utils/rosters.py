@@ -1,4 +1,4 @@
-import wf_core_data.rosters.shared_constants
+import wf_core_data
 import pandas as pd
 import os
 import logging
@@ -83,7 +83,7 @@ FOUNTAS_PINNELL_TESTABLE_GRADES = [
     '12'
 ]
 
-def create_fountas_pinnell_roster_and_write_locally(
+def create_roster_and_write_locally(
     base_directory,
     filename_suffix,
     master_roster_subdirectory='master_rosters',
@@ -104,10 +104,10 @@ def create_fountas_pinnell_roster_and_write_locally(
         )
     )
     master_roster_data = pd.read_pickle(filename)
-    fountas_pinnell_roster_data = wf_core_data.create_fountas_pinnell_roster(
+    fountas_pinnell_roster_data = wf_core_data.create_roster(
         master_roster_data=master_roster_data
     )
-    wf_core_data.write_fountas_pinnell_rosters_local(
+    write_rosters_local(
         fountas_pinnell_roster_data=fountas_pinnell_roster_data,
         base_directory=base_directory,
         subdirectory=fountas_pinnell_roster_subdirectory,
@@ -115,7 +115,7 @@ def create_fountas_pinnell_roster_and_write_locally(
         filename_suffix=filename_suffix
     )
 
-def create_fountas_pinnell_roster(
+def create_roster(
     master_roster_data
 ):
     ## Rename fields
@@ -192,7 +192,7 @@ def create_fountas_pinnell_roster(
     ))
     return fountas_pinnell_roster_data
 
-def write_fountas_pinnell_rosters_local(
+def write_rosters_local(
     fountas_pinnell_roster_data,
     base_directory,
     subdirectory='fountas_pinnell_rosters',
